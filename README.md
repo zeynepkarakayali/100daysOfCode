@@ -1,4 +1,4 @@
-![image](https://github.com/zeynepkarakayali/100daysOfCode/assets/94761453/fefff2cd-ffb2-4182-9734-57b20cc417ea)# 100daysOfCode
+# 100daysOfCode
 The repository where I publish my progress of the 100 Days of Code by Dr. Angela Yu.
 
 --------
