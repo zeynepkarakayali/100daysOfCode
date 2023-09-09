@@ -82,6 +82,7 @@ else:
 ~~~
 ![Output of Day 3](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day3.png)
 
+--------
 ### Day 4. 
 ### Project Name: Rock Paper Scissors Game
 <br>
@@ -236,3 +237,62 @@ elif(player == "scissors"):
         print("ITS'A DRAW!")
 ~~~
 ![Output of Day 4](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day4.png)
+
+--------
+### Day 5. 
+### Project Name: Password Generator
+<br>
+The goal of day 5 is to write a Python Password Generator that consists numbers, letters and symbols.
+
+The code of Day 5:
+~~~
+#Password Generator Project
+import random
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+print("Welcome to the PyPassword Generator!")
+nr_letters= int(input("How many letters would you like in your password?\n")) 
+nr_symbols = int(input(f"How many symbols would you like?\n"))
+nr_numbers = int(input(f"How many numbers would you like?\n"))
+
+#Eazy Level - Order not randomised:
+#e.g. 4 letter, 2 symbol, 2 number = JduE&!91
+
+"""
+password = ""
+for i in range(0, nr_letters):
+    password += random.choice(letters)
+
+for i in range(0, nr_symbols):
+    password += random.choice(symbols)
+
+for i in range(0, nr_numbers):
+    password += random.choice(numbers)
+    
+print(f"Your new password is: {password}")
+"""
+
+#Hard Level - Order of characters randomised:
+#e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
+passwordList = []
+
+for i in range(0, nr_letters):
+    passwordList += random.choice(letters)
+
+for i in range(0, nr_symbols):
+    passwordList += random.choice(symbols)
+
+for i in range(0, nr_numbers):
+    passwordList += random.choice(numbers)
+
+random.shuffle(passwordList)
+#print(passwordList)
+
+password = ""
+for a in passwordList:
+    password += a
+print(password)
+~~~
+![Output of Day 5](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day5.png)
