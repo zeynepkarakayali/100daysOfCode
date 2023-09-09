@@ -1,4 +1,4 @@
-# 100daysOfCode
+![image](https://github.com/zeynepkarakayali/100daysOfCode/assets/94761453/fefff2cd-ffb2-4182-9734-57b20cc417ea)# 100daysOfCode
 The repository where I publish my progress of the 100 Days of Code by Dr. Angela Yu.
 
 --------
@@ -81,3 +81,158 @@ else:
     print("There are no roads like that.")
 ~~~
 ![Output of Day 3](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day3.png)
+
+### Day 4. 
+### Project Name: Rock Paper Scissors Game
+<br>
+The goal of day 4 is to write a game called Rock Paper Scissors.
+
+The code of Day 4:
+~~~
+import random
+
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+#Write your code below this line 👇
+print("Welcome to the rock paper scissors game!")
+player = input("You need to make a choice. Rock, paper or scissors? ").lower()
+
+options = [rock,paper,scissors]
+len = len(options)
+
+num = random.randint(0, len-1)
+computer = options[num]
+
+print(f"\nThe computer played: ")
+print(computer)
+
+# the player played rock
+if(player == "rock"):
+    print(f"You played: {rock}")
+    #computer played rock
+    if(computer == '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''):
+        print("ITS'A DRAW!")
+    # computer played paper
+    elif(computer == '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''):
+        print("The computer won :(")
+    # computer played scissors
+    elif(computer == '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''):
+        print("YOU WON! CONGRATS!")
+
+# player played paper
+elif(player == "paper"):
+    print(f"You played: {paper}")
+    # computer played rock
+    if(computer == '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''):
+        print("YOU WON! CONGRATS!")
+    # computer played paper
+    elif(computer == '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''):
+        print("ITS'A DRAW!")
+
+    #computer played scissors
+    elif(computer == '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''):
+        print("The computer won :(")
+
+# player played scissors
+elif(player == "scissors"):
+    print(f"You played: {scissors}")
+    # computer played rock
+    if(computer == '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''):
+        print("The computer won :(")
+    # computer played paper
+    elif(computer == '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''):
+        print("YOU WON! CONGRATS!")
+
+    #computer played scissors
+    elif(computer == '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''):
+        print("ITS'A DRAW!")
+~~~
+![Output of Day 4]()
