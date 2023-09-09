@@ -235,4 +235,4 @@ elif(player == "scissors"):
 '''):
         print("ITS'A DRAW!")
 ~~~
-![Output of Day 4]()
+![Output of Day 4](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day4.png)
