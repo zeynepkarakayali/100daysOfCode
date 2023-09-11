@@ -296,3 +296,72 @@ for a in passwordList:
 print(password)
 ~~~
 ![Output of Day 5](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day5.png)
+
+--------
+### Day 6. 
+### Project Name: Escaping the Maze
+<br>
+The goal of day 6 is to solve a challenge named Escaping the Maze.
+In this day, we solved a bunch of coding challenges in 
+
+[https://reeborg.ca/index_en.html]  and the last challenge was an escaping the maze coding challenge for our robot Reeborg.
+<br> <br>
+
+![Output of Day 6](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day6.png)
+
+--------
+### Day 7. 
+### Project Name: Hangman Game
+<br>
+The goal of day 7 is to write the Hangman Game.
+In this day, we split the game step by step and solve them one by one.
+
+The code of Day 7:
+~~~
+#Step 5
+# HANGMAN GAME
+
+import hangman_art
+import hangman_words
+import random
+
+chosen_word = random.choice(hangman_words.word_list)
+word_length = len(chosen_word)
+
+end_of_game = False
+lives = 6
+
+print(f"{hangman_art.logo}")
+print(f'Pssst, the solution is {chosen_word}.')
+
+display = []
+for _ in range(word_length):
+    display += "_"
+
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
+
+    if guess in display:
+        print("You already guessed this word. ")
+
+    for position in range(word_length):
+        letter = chosen_word[position]
+        if letter == guess:
+            display[position] = letter
+
+    if guess not in chosen_word:
+        print(f"The letter {guess} is not in the word. ")
+        lives -= 1
+        if lives == 0:
+            end_of_game = True
+            print("You lose.")
+
+    print(f"{' '.join(display)}")
+
+    if "_" not in display:
+        end_of_game = True
+        print("You win.")
+
+    print(hangman_art.stages[lives])
+~~~
+![Output of Day 7](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day7.png)
