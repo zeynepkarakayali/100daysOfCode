@@ -365,3 +365,49 @@ while not end_of_game:
     print(hangman_art.stages[lives])
 ~~~
 ![Output of Day 7](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day7.png)
+
+--------
+### Day 8. 
+### Project Name: Caesar's Cipher
+<br>
+The goal of day 8 is to write a Caesar's Cipher code.
+In this day, we split the cipher code step by step and solve them one by one.
+
+The code of Day 8:
+~~~
+from art import logo
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+def caesar(start_text, shift_amount, cipher_direction):
+  end_text = ""
+  if cipher_direction == "decode":
+    shift_amount *= -1
+  for char in start_text:
+    if char in alphabet:
+        position = alphabet.index(char)
+        new_position = position + shift_amount
+        end_text += alphabet[new_position]
+    else:
+        end_text += char
+    
+  print(f"Here's the {cipher_direction}d result: {end_text}")
+
+print(logo)
+
+user = True
+while user:
+    if user:
+        direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+        text = input("Type your message:\n").lower()
+        shift = int(input("Type the shift number:\n"))
+        if(shift > 26):
+           shift %= 26
+        caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+        var = input("Do you want to restart the program. Type 'yes' if you want to go again. Otherwise type 'no'. ").lower()
+        if(var == "yes"):
+           user = True
+        elif(var == "no"):
+           user = False
+~~~
+![Output of Day 8](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day8.png)
