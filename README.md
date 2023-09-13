@@ -411,3 +411,43 @@ while user:
            user = False
 ~~~
 ![Output of Day 8](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day8.png)
+
+--------
+### Day 9. 
+### Project Name: Secret Auction
+<br>
+The goal of day 9 is to write a Secret Auction Program in code.
+
+For this day the goal is normally to write a **secret** auction program that's why we should use the clear() function from replit but since I usually prefer to write my codes in [VsCode](https://code.visualstudio.com/) I didn't use the function. That's why my auction turned out to be *not so secret* auction.
+
+The code of Day 9:
+~~~
+from art import logo
+
+def auction(bidders):
+
+    highestBid = 0
+    highestBidder = ""
+
+    for bidder in bidders:
+        if(bidders[bidder] > highestBid):
+            highestBid = bidders[bidder]
+            highestBidder = bidder
+    print(f"The winner of the auction is: {highestBidder} with a bid of ${highestBid}")
+
+bidders = {}
+biddingFinished = False
+while not biddingFinished:
+    print("Welcome to the secret auction program. ")
+    name = input("What is your name? ")
+    bid = int(input("What is your bid? "))
+    continuee = input("Are there any other bidders? Type 'yes' or 'no'. ").lower()
+    bidders[name] = bid
+
+    if continuee == "no":
+        auction(bidders)
+        biddingFinished = True
+    elif continuee == "yes":
+        auction(bidders)
+~~~
+![Output of Day 9](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day9.png)
