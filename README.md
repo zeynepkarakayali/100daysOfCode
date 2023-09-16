@@ -524,3 +524,102 @@ def calculator():
 calculator()
 ~~~
 ![Output of Day 10](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day10.png)
+
+--------
+### Day 11. 
+### Project Name: The Blackjack Capstone Project
+<br>
+The goal of day 11 is to write the Blackjack game in code.
+
+The rules of the game are:
+- The deck is unlimited in size. 
+- There are no jokers. 
+- The Jack/Queen/King all count as 10.
+- The the Ace can count as 11 or 1.
+- Use the following list as the deck of cards:
+- cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+- The cards in the list have equal probability of being drawn.
+- Cards are not removed from the deck as they are drawn.
+- The computer is the dealer.
+
+The code of Day 11:
+~~~
+from art import logo
+import random
+
+def dealCard():
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    cardChoice = random.choice(cards)
+    return cardChoice
+
+def sumCards(deck):
+    if (sum(deck) == 21) and (len(deck) == 2):
+        return 0
+    
+    if 11 in deck and sum(deck) > 21:
+        deck.remove(11)
+        deck.append(1)
+        
+    return sum(deck)
+
+
+print("Welcome to the Blackjack Game! ")
+
+def blackjack():
+
+    game = input("Do you want to play the blackjack game? Type 'y' or 'n': ").lower()
+    print(logo)
+
+    myCards = []
+    compCards = []
+    gameFinished = False
+
+    if(game == "y"):
+        for i in range(2):
+            myCards.append(dealCard())
+            compCards.append(dealCard())
+
+    elif(game == "n"):
+        gameFinished = True
+
+    while not gameFinished:
+        myScore = sumCards(myCards)
+        compScore = sumCards(compCards)
+        print(f"   Your cards: {myCards}, current score: {myScore}")
+        print(f"   Computer's first card: {compCards[0]}")
+
+        game = input("Type 'y' to get another card, type 'n' to pass: ")
+        if(game == "y"):
+            myCards.append(dealCard())
+            myScore = sumCards(myCards)
+            if(myScore > 21):
+                print("You went over! You lost! ")
+                gameFinished = True
+                break
+        else:
+            gameFinished = True
+
+    while compScore != 0 and compScore < 17:
+        compCards.append(dealCard())
+        compScore = sumCards(compCards)
+
+    print(f"Your final hand: {myCards}, final score: {myScore}")
+    print(f"Computer's final hand: {compCards}, final score: {compScore}")
+    if(myScore > 21):
+        print("You went over. You lost the game! ")
+    elif(compScore > 21):
+        print("Computer went over. You win! ")
+    elif(compScore == myScore):
+        print("It's a draw!")
+    elif(myScore == 21):
+        print("You won with a Blackjack! ")
+    elif(compScore == 21):
+        print("Computer won with a blackjack! ")
+    elif(myScore > compScore):
+        print("You win! ")
+    else:
+        print("You lose! ")
+
+blackjack()
+~~~
+![Output of Day 11](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day11.png)
