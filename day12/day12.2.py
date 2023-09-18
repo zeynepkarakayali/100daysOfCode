@@ -27,5 +27,5 @@ while (attempt > 0) and (guess != number):
         print("Are you a magician :d")
     attempt -= 1
 
-if(attempt == 0):
+if(attempt == 0) and (guess != number):
     print("You ran out of attempts. :(")
