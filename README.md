@@ -670,3 +670,70 @@ if(attempt == 0) and (guess != number):
     print("You ran out of attempts. :(")
 ~~~
 ![Output of Day 12](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day12.png)
+
+--------
+### Day 13. 
+### Project Name: Debugging
+<br>
+The goal of day 13 is to debug old projects we did.
+
+Note: I didn't include the outputs of the codes because I already included them before.
+
+--------
+### Day 14. 
+### Project Name: Higher Lower Game
+<br>
+The goal of day 14 is to write [The Higher Lower Game](https://higherlowergame.com/) in code.
+
+The code of Day 14:
+~~~
+# The Higher Lower Game
+import art
+import gameData
+import random
+
+
+def higherLower():
+    score = 0
+    gameOver = False
+    
+    while not gameOver:
+
+        print(art.logo)
+        #print("\n")
+        a = random.choice(gameData.data)
+        b = random.choice(gameData.data)
+        # print(a)
+        # print(b)    
+
+        while a == b:
+            b = random.choice(gameData.data)
+            print(b)
+
+        print(f"Compare A: {a['name']}, a {a['description']}, from {a['country']}.")
+        print(art.vs)
+        print(f"Compare B: {b['name']}, a {b['description']}, from {b['country']}.")
+        choice = input("\nWho has more followers? Type 'A' or 'B': ").lower()
+
+        if(choice == "a"):     
+            if(a["follower_count"] >= b["follower_count"]):
+                score += 1
+                print(f"You are right! Current score: {score}")
+            else:
+                print(f"Sorry that's wrong. Current score: {score}")
+                gameOver = True
+
+        elif(choice == "b"):     
+            if(b["follower_count"] >= a["follower_count"]):
+                score += 1
+                print(f"You are right! Current score: {score}")
+            else:
+                print(f"Sorry that's wrong. Current score: {score}")
+                gameOver = True 
+        else:
+            print(f"Sorry you typed wrong. Current score: {score}")
+            gameOver = True
+
+higherLower()
+~~~
+![Output of Day 14](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day14.png)
