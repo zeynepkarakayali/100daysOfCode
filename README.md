@@ -683,9 +683,12 @@ Note: I didn't include the outputs of the codes because I already included them 
 ### Day 14. 
 ### Project Name: Higher Lower Game
 <br>
-The goal of day 14 is to write [The Higher Lower Game](https://higherlowergame.com/) in code.
+The goal of day 14 is to write:
+
+[The Higher Lower Game](https://higherlowergame.com) in code.
 
 The code of Day 14:
+
 ~~~
 # The Higher Lower Game
 import art
