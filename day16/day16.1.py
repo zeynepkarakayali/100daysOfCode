@@ -1,4 +1,5 @@
-"""import turtle
+"""
+import turtle
 from turtle import Turtle, Screen
 
 timmy = Turtle()
@@ -9,8 +10,10 @@ turtle.forward(100)
 
 myScreen = Screen()
 print(myScreen.canvheight)
-myScreen.exitonclick()"""
+myScreen.exitonclick()
+"""
 
+"""
 from prettytable import PrettyTable
 table = PrettyTable()
 print(table)
@@ -19,3 +22,4 @@ table.add_column("Type", ["Electric", "Water", "Fire"])
 
 table.align = "l"
 print(table)
+"""
