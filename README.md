@@ -858,3 +858,36 @@ while not isOver:
                 coffeeMaker.make_coffee(drink)
 ~~~
 ![Output of Day 16](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day16.png)
+
+--------
+### Day 17. 
+### Project Name: Quiz Game
+<br>
+The goal of day 17 is to write a Quiz Game by using:
+
+[Open Trivia Database](https://opentdb.com/api_config.php) site.
+
+The code of Day 17:
+
+~~~
+from question_model import Question
+from data import question_data
+from quiz_brain import QuizBrain
+
+question_bank = []
+
+for item in question_data:
+    new_question = Question(item["question"], item["correct_answer"])
+    question_bank.append(new_question)
+
+#print(question_bank[0].question)
+
+quiz = QuizBrain(question_bank)
+
+while quiz.still_has_questions():
+    quiz.next_question()
+
+print("You've completed the quiz. ")
+print(f"Your final score was: {quiz.score}/{quiz.question_number}. ")
+~~~
+![Output of Day 17](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day17.png)
