@@ -891,3 +891,99 @@ print("You've completed the quiz. ")
 print(f"Your final score was: {quiz.score}/{quiz.question_number}. ")
 ~~~
 ![Output of Day 17](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day17.png)
+
+--------
+### Day 18. 
+### Project Name: Hirst Painting
+<br>
+The goal of day 18 is to imitate one of the Damien Hirst's spot paintings by using *Turtle* module.
+I used a random color scheme sampled by one of the Damien Hirst's paintings.
+
+The code of Day 18:
+
+~~~
+import colorgram
+import random
+from turtle import Turtle, Screen
+
+timmy = Turtle()
+colors = colorgram.extract("/Users/zeynep/Desktop/100daysOfCode/day18/hirst_painting/hirstPainting.jpg", 65)
+
+colors_list = ['#FDFDFC', '#F2F4F7', '#F1F7F3', '#904C32', '#BCA575', '#F8F4F6', '#A69924', '#0E2E55', '#8BB9B0', 
+ '#923851', '#2A6E88', '#3B7863', '#91AAB1', '#57231E', '#4098A9', '#DCD15D', '#6E251F', '#64916F', '#A56383', 
+ '#5B7AAC', '#9E8A9E', '#B16852', '#373455', '#CEB6C3', '#44303F', '#493347', '#ADC9C2', '#AFC6C9', '#D5B6B0', 
+ '#252F2D', '#0E656D', '#BCBEC9', '#0B7068', '#41423A']
+
+timmy.speed("fastest")
+timmy.penup()
+timmy.hideturtle()
+timmy.setheading(225)
+timmy.forward(300)
+timmy.setheading(0)
+
+number_of_dots = 100
+
+for dot_count in range(1, number_of_dots + 1):
+    timmy.dot(20, random.choice(colors_list))
+    timmy.forward(50)
+
+    if dot_count%10 == 0:
+        timmy.setheading(90)
+        timmy.forward(50)
+        timmy.setheading(180)
+        timmy.forward(500)
+        timmy.setheading(0)
+
+screen = Screen()
+screen.exitonclick()
+~~~
+![Output of Day 18](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day18.png)
+
+--------
+### Day 19. 
+### Project Name: Turtle Race
+<br>
+The goal of day 19 is to write a Turtle Race by using the Turtle module. 
+
+(In the code below, I deleted all the unnecessary commented lines but you can find the whole code in the files.)
+
+The code of Day 19:
+
+~~~
+from turtle import Turtle, Screen
+import random
+
+screen = Screen()
+screen.setup(width=700, height=500)
+is_race_on = False
+user_bet = screen.textinput(title="MAKE YOUR BET", prompt="Which turtule will win the race? Enter a color:")
+y_positions = [125, 75, 25, -25, -75, -125]
+colors = ["red","blue","green","yellow","orange", "pink"]
+all_turtles = []
+
+for turtle_index in range(0, 6):
+    turtle = Turtle(shape="turtle")
+    turtle.penup()
+    turtle.color(colors[turtle_index])
+    turtle.goto(-320, y_positions[turtle_index])
+    all_turtles.append(turtle)
+
+if user_bet:
+    is_race_on = True
+
+while is_race_on:
+    for turtle in all_turtles:
+        if(turtle.xcor() >= 330):
+            winning_color = turtle.pencolor()
+            is_race_on = False
+            if winning_color == user_bet:
+                print(f"!!!YOU WON!!! The {winning_color} turtle is the winner! ")
+            else:
+                print(f"You lost! The {winning_color} turtle is the winner! ")
+
+        speed = random.randint(0,10)
+        turtle.forward(speed)
+
+screen.exitonclick()
+~~~
+![Output of Day 19](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day19.png)
