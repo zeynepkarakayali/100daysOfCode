@@ -987,3 +987,174 @@ while is_race_on:
 screen.exitonclick()
 ~~~
 ![Output of Day 19](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day19.png)
+
+--------
+### Day 20 & 21. 
+### Project Name: Snake Game
+<br>
+The goal of day 20 & 21 is to write the Snake Game by using the Turtle module. 
+
+The code of Day 20 & 21:
+
+~~~
+from turtle import Turtle,Screen
+import time
+from snake import Snake
+from food import Food
+from scoreboard import Scoreboard 
+
+screen = Screen()
+screen.setup(width=600, height=600)
+screen.bgcolor("black")
+screen.title("My Snake Game")
+screen.tracer(0)
+
+snake = Snake()
+food = Food()
+scoreboard = Scoreboard()
+
+screen.listen()
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.left, "Left")
+screen.onkey(snake.right, "Right")
+
+game_is_on = True
+
+while game_is_on:
+    screen.update()
+    time.sleep(0.1)
+    snake.move()
+
+    # Detect collision with food.
+    if snake.head.distance(food) < 12:
+        food.refresh()
+        snake.extend()
+        scoreboard.increase_score()
+
+    # Detect collision with wall.
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        game_is_on = False
+        scoreboard.game_over()
+
+    # Detect collision with tail.
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 8:
+            game_is_on = False
+            scoreboard.game_over()
+
+screen.exitonclick()
+~~~
+![Output of Day 21](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day21.png)
+
+--------
+### Day 22. 
+### Project Name: Pong Game
+<br>
+The goal of day 22 is to write the Pong Game by using the Turtle module. 
+
+The code of Day 22:
+
+~~~
+from turtle import Turtle,Screen
+from paddle import Paddle
+from ball import Ball
+from scoreboard import Scoreboard
+import time
+
+screen = Screen()
+screen.bgcolor("black")
+screen.setup(width=800, height=600)
+screen.title("Pong")
+screen.tracer(0)
+
+l_paddle = Paddle((-350, 0))
+r_paddle = Paddle((350, 0))
+
+ball = Ball()
+
+scoreboard = Scoreboard()
+
+screen.listen()
+screen.onkey(r_paddle.go_up, "Up")
+screen.onkey(r_paddle.go_down, "Down")
+screen.onkey(l_paddle.go_up, "w")
+screen.onkey(l_paddle.go_down, "s")
+
+game_is_on = True
+while game_is_on:
+    time.sleep(ball.move_speed)
+    screen.update()
+    ball.move()
+
+    # Detect collision with walls.
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce_y()
+
+    # Detect collision with r_paddle and l_paddle
+    if (ball.distance(r_paddle) < 50 and ball.xcor() > 320) or (ball.distance(l_paddle) < 50 and ball.xcor() < -320):
+        ball.bounce_x()
+
+    # Detect when the right paddle misses
+    if ball.xcor() > 380:
+        ball.reset_position()
+        scoreboard.increase_l_score()
+    
+    # Detect when the left paddle misses
+    if ball.xcor() < -380:
+        ball.reset_position()
+        scoreboard.increase_r_score()
+
+screen.exitonclick()
+~~~
+![Output of Day 22](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day22.png)
+
+--------
+### Day 23. 
+### Project Name: Turtle Crossing
+<br>
+The goal of day 23 is to write the Turtle Corssing Game by using the Turtle module. 
+
+The code of Day 23:
+
+~~~
+import time
+from turtle import Screen
+from player import Player
+from car_manager import CarManager
+from scoreboard import Scoreboard
+
+screen = Screen()
+screen.setup(width=600, height=600)
+screen.title("Turtle Crossing")
+screen.bgcolor("white")
+screen.tracer(0)
+
+player = Player()
+carManager = CarManager()
+scoreboard = Scoreboard()
+
+screen.listen()
+screen.onkey(player.move, "Up")
+
+game_is_on = True
+while game_is_on:
+    time.sleep(0.1)
+    screen.update()
+    carManager.create_car()
+    carManager.move()
+
+    # Detect collision with cars
+    for car in carManager.all_cars:
+        if car.distance(player) < 20:
+            game_is_on = False
+            scoreboard.game_over()
+
+    if player.is_at_finish_line():
+        player.go_to_start()
+        carManager.increase_speed()
+        scoreboard.increase_score()
+
+screen.exitonclick()
+~~~
+![Output of Day 23](https://github.com/zeynepkarakayali/100daysOfCode/blob/main/outputs/day23.png)
